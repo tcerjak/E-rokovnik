@@ -1,0 +1,82 @@
+#page-top
+{
+	background-color: white;
+}
+#about
+{
+	color: black;
+	border-bottom: 1px solid #939393;
+}
+#contact
+{
+	color: black;
+	background-color: rgb(248,248,248);
+	padding-bottom: 40px;
+}
+.content-section {
+	padding-top: 30px;
+}
+h2 {
+	font-family: Lobster;
+	font-size: 40px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 26.4px;
+	color: black;
+}
+.btn-default, a
+{
+	color: #426ADC;
+}
+.login
+{
+	background-color: #f9f9f9;
+	border-radius: 15px 50px 30px;
+	padding: 100px;
+}
+form
+{
+	color:black;
+}
+
+.dropdown
+{
+	background-color: #ffffff;
+	border-radius: 25px;
+	margin-left: 10px;
+	margin-top: 5px;
+}
+
+.navbar-custom .nav li a:hover {
+	color: #939393;
+}
+
+.btn-default {
+	border: none;
+	color: black;
+	background-color: transparent;
+}
+
+.btn-default:focus, .btn-default:hover {
+	border: none;
+	color: #000;
+	background-color: rgb(212,216,217);
+}
+
+
+.navbar-custom.top-nav-collapse .navbar-right{
+	padding:10px;background:#000;
+	border-bottom:1px solid rgba(255,255,255,.3);
+}
+
+table
+{
+	background-color: #fff;
+	color: black;
+	border-radius: 10px;
+}
+tbody
+{
+	text-align: left;
+}
