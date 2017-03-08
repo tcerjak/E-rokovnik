@@ -1,4 +1,4 @@
-<?php 
+<?php
 require 'core.php';
 ?>
 <!DOCTYPE html>
@@ -25,8 +25,8 @@ require 'core.php';
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
                 <h2>O aplikaciji</h2>
-                <img src="img/pencil-icon.png"  width="250" height="250"> 
-                <hr>               
+                <img src="img/pencil-icon.png"  width="250" height="250">
+                <hr>
                 <p>Grayscale is a free Bootstrap 3 theme created by Start Bootstrap. It can be yours right now, simply download the template on <a href="http://startbootstrap.com/template-overviews/grayscale/">the preview page</a>. The theme is open source, and you can use it for any purpose, personal or commercial.</p>
             </div>
         </div>
@@ -36,8 +36,8 @@ require 'core.php';
         <div class="row">
          <div class="col-md-4 col-md-offset-4">
             <h2>Kontaktirajte nas</h2>
-            <img src="img/paper-plane.png"  width="250" height="250"> 
-            <hr>  
+            <img src="img/paper-plane.png"  width="250" height="250">
+            <hr>
             <p>Feel free to email us to provide some feedback on our templates, give us suggestions for new templates and themes, or to just say hello!</p>
             <ul class="list-inline banner-social-buttons">
                 <li>

@@ -5,15 +5,15 @@
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
             Sadržaj <i class="fa fa-bars"></i>
           </button>
-          <?php 
+          <?php
           if (!isset($_SESSION['aktivni_korisnik_id'])) {
             echo  "<a class='navbar-brand page-scroll' href='login_registration.php'>
-            <i class='fa fa-thumbs-up'></i> 
+            <i class='fa fa-thumbs-up'></i>
             <span class='light'>Prijava</span>
           </a>";
-        } else 
+        } else
         echo  "<a class='navbar-brand page-scroll' href='logaout.php'>
-        <i class='fa fa-hand-spock-o'></i> 
+        <i class='fa fa-hand-spock-o'></i>
         <span class='light'>Odjava " .$_SESSION['aktivni_korisnik_ime']."</span>
       </a>";
 
@@ -27,9 +27,9 @@
         <li class="hidden">
           <a href="#page-top"></a>
         </li>
-        <?php 
+        <?php
         if (!isset($_SESSION['aktivni_korisnik_id'])) {
-          echo " 
+          echo "
           <li>
             <a class='page-scroll' href='#about'>O aplikaciji</a>
           </li>
@@ -46,9 +46,9 @@
                 <span class='caret'></span></button>
                 <ul class='dropdown-menu'>
                   <li><a href='users.php''>Pregled korisnika</a></li>
-                  <li><a href='#''>Dodaj korisnika</a></li>
+                  <li><a href='update_insert_user.php'>Dodaj korisnika</a></li>
                 </ul>
-              </div> 
+              </div>
             </li>
             <li>
               <div class='dropdown'>
@@ -58,7 +58,7 @@
                     <li><a href='#''>Pregled zemlja</a></li>
                     <li><a href='#''>Dodaj zemlju</a></li>
                   </ul>
-                </div> 
+                </div>
               </li>
               <li>
                 <div class='dropdown'>
@@ -68,7 +68,7 @@
                       <li><a href='#''>Pregled događaja</a></li>
                       <li><a href='#''>Dodaj događaj</a></li>
                     </ul>
-                  </div> 
+                  </div>
                 </li>
                 <li>
                   <div class='dropdown'>
@@ -78,11 +78,11 @@
                         <li><a href='#''>Pregled zapisa</a></li>
                         <li><a href='#''>Dodaj zapis</a></li>
                       </ul>
-                    </div> 
+                    </div>
                   </li>
                   ";
                   break;
-                  
+
                   default:
                     # code...
                   break;

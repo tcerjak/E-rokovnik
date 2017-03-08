@@ -1,6 +1,11 @@
-<?php 
+<?php
 require 'core.php';
 $query_r = query_r("SELECT korisnik_id, tip_id, korisnicko_ime, lozinka, ime, prezime, email FROM korisnik");
+if(isset($_GET['delete_id'])){
+    $user_id = $_GET['delete_id'];
+    query("DELETE from korisnik WHERE korisnik_id='$user_id'");
+    header('Location:users.php');
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -25,10 +30,10 @@ $query_r = query_r("SELECT korisnik_id, tip_id, korisnicko_ime, lozinka, ime, pr
     <!-- User Section -->
     <section id="about" class="container-fluid content-section text-center">
         <div class="row">
-            <div class="col-md-4 col-md-offset-4">
-                <img src="img/users-icon.png"  width="250" height="250""> 
-                <hr>               
-                <div class="table-responsive">          
+            <div class="col-md-6 col-md-offset-3">
+                <img src="img/users-icon.png"  width="250" height="250"">
+                <hr>
+                <div class="table-responsive">
                   <table class="table">
                     <thead>
                       <tr>
@@ -41,13 +46,13 @@ $query_r = query_r("SELECT korisnik_id, tip_id, korisnicko_ime, lozinka, ime, pr
                     </tr>
                 </thead>
                 <tbody>
-                    <?php 
+                    <?php
                     foreach ($query_r as $result){
-                        list($korisnik_id, $tip_id, $korisnicko_ime, $ime, $prezime, $email) = $result;
+                        list($korisnik_id, $tip_id, $korisnicko_ime, $lozinka, $ime, $prezime, $email) = $result;
                         $query = query("SELECT tip_korisnika.naziv FROM tip_korisnika WHERE tip_korisnika.tip_id = $tip_id");
                         $result = mysqli_fetch_array($query, MYSQLI_ASSOC);
                         $tip_korisnika = $result['naziv'];
-                        echo           
+                        echo
                         "<tr>
                         <td>$korisnik_id</td>
                         <td>$korisnicko_ime</td>
@@ -55,9 +60,10 @@ $query_r = query_r("SELECT korisnik_id, tip_id, korisnicko_ime, lozinka, ime, pr
                         <td>$prezime</td>
                         <td>$email</td>
                         <td>$tip_korisnika</td>
-                        <td><a class='btn btn-primary' href='update_insert_user.php?id=$korisnik_id'>Ažuriraj</a></td>
+                        <td><a class='btn btn-primary' href='update_insert_user.php?id=$korisnik_id'>Potvrdi</a></td>
+                        <td><a class='btn btn-danger' href='users.php?delete_id=$korisnik_id'>Obriši</a></td>
                     </tr>";
-                } 
+                }
                 ?>
             </tbody>
         </table>
