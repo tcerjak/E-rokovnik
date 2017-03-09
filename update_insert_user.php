@@ -117,7 +117,7 @@ if(!isset($_GET['id'])){
                         </select>
                     </div>
                     <input type="hidden" name="user_id" id="user_id" class="form-control" value="<?php echo $_GET['id'];?>">
-                    <button type="submit" class="btn btn-lg btn-primary btn-block">Ažuriraj</button>
+                    <button type="submit" class="btn btn-lg btn-primary btn-block">Potvrdi</button>
                 </form>
             </div>
         </div>

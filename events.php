@@ -1,10 +1,10 @@
 <?php
 require 'core.php';
-$query_r = query_r("SELECT korisnik_id, tip_id, korisnicko_ime, lozinka, ime, prezime, email FROM korisnik");
+$query_r = query_r("SELECT * FROM `vrsta_dogadaja`");
 if(isset($_GET['delete_id'])){
-    $user_id = $_GET['delete_id'];
-    query("DELETE from korisnik WHERE korisnik_id='$user_id'");
-    header('Location:users.php');
+    $event_id = $_GET['delete_id'];
+    query("DELETE from vrsta_dogadaja WHERE vrsta_id='$event_id'");
+    header('Location:events.php');
 }
 ?>
 <!DOCTYPE html>
@@ -18,7 +18,7 @@ if(isset($_GET['delete_id'])){
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
-                        <h1 class="brand-heading">Korisnici</h1>
+                        <h1 class="brand-heading">DOGAĐAJI</h1>
                         <a href="#about" class="btn btn-circle page-scroll">
                             <i class="fa fa-angle-double-down animated"></i>
                         </a>
@@ -30,7 +30,7 @@ if(isset($_GET['delete_id'])){
     <!-- User Section -->
     <section id="about" class="container-fluid content-section text-center">
         <div class="row">
-            <div class="col-md-6 col-md-offset-3">
+            <div class="col-md-4 col-md-offset-4">
                 <img src="img/users-icon.png"  width="250" height="250"">
                 <hr>
                 <div class="table-responsive">
@@ -38,30 +38,19 @@ if(isset($_GET['delete_id'])){
                     <thead>
                       <tr>
                         <th>#</th>
-                        <th>Korisničko ime</th>
-                        <th>Ime</th>
-                        <th>Prezime</th>
-                        <th>E-mail</th>
-                        <th>Tip korisnika</th>
+                        <th>Naziv</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
                     foreach ($query_r as $result){
-                        list($korisnik_id, $tip_id, $korisnicko_ime, $lozinka, $ime, $prezime, $email) = $result;
-                        $query = query("SELECT tip_korisnika.naziv FROM tip_korisnika WHERE tip_korisnika.tip_id = $tip_id");
-                        $result = mysqli_fetch_array($query, MYSQLI_ASSOC);
-                        $tip_korisnika = $result['naziv'];
+                        list($id, $naziv) = $result;
                         echo
                         "<tr>
-                        <td>$korisnik_id</td>
-                        <td>$korisnicko_ime</td>
-                        <td>$ime</td>
-                        <td>$prezime</td>
-                        <td>$email</td>
-                        <td>$tip_korisnika</td>
-                        <td><a class='btn btn-primary' href='update_insert_user.php?id=$korisnik_id'>Ažuriraj</a></td>
-                        <td><a class='btn btn-danger' href='users.php?delete_id=$korisnik_id'>Obriši</a></td>
+                        <td>$id</td>
+                        <td>$naziv</td>
+                        <td><a class='btn btn-primary' href='update_insert_events.php?id=$id'>Ažuriraj</a></td>
+                        <td><a class='btn btn-danger' href='events.php?delete_id=$id'>Obriši</a></td>
                     </tr>";
                 }
                 ?>

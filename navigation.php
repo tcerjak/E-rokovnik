@@ -55,7 +55,7 @@
                 <button class='btn btn-default dropdown-toggle' type='button' data-toggle='dropdown'>Zemlja
                   <span class='caret'></span></button>
                   <ul class='dropdown-menu'>
-                    <li><a href='#''>Pregled zemlja</a></li>
+                    <li><a href='#'>Pregled zemlja</a></li>
                     <li><a href='#''>Dodaj zemlju</a></li>
                   </ul>
                 </div>
@@ -65,8 +65,8 @@
                   <button class='btn btn-default dropdown-toggle' type='button' data-toggle='dropdown'>Događaji
                     <span class='caret'></span></button>
                     <ul class='dropdown-menu'>
-                      <li><a href='#''>Pregled događaja</a></li>
-                      <li><a href='#''>Dodaj događaj</a></li>
+                      <li><a href='events.php'>Pregled događaja</a></li>
+                      <li><a href='update_insert_events.php'>Dodaj događaj</a></li>
                     </ul>
                   </div>
                 </li>
