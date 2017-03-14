@@ -55,8 +55,8 @@
                 <button class='btn btn-default dropdown-toggle' type='button' data-toggle='dropdown'>Zemlja
                   <span class='caret'></span></button>
                   <ul class='dropdown-menu'>
-                    <li><a href='#'>Pregled zemlja</a></li>
-                    <li><a href='#''>Dodaj zemlju</a></li>
+                    <li><a href='country.php'>Pregled zemlja</a></li>
+                    <li><a href='update_insert_countries.php'>Dodaj zemlju</a></li>
                   </ul>
                 </div>
               </li>
