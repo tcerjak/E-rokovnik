@@ -80,3 +80,10 @@ tbody
 {
 	text-align: left;
 }
+
+.scrollable-menu {
+    height: auto;
+    max-height: 100px;
+    overflow-x: hidden;
+}
+
