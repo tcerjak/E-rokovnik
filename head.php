@@ -20,6 +20,12 @@
     <link href="css/grayscale.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/custom.css">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lobster" />
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="dist/bootstrap-clockpicker.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/github.min.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <!-- Datepicker uredivanje -->
+    <link rel="stylesheet" type="text/css" href="css/images/">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

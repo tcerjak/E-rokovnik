@@ -48,19 +48,21 @@ if(isset($_GET['delete_id'])){
                     </tr>
                 </thead>
                 <tbody>
-                <?php
-                    foreach ($query_r as $row) {
-                        list($praznik_id, $zemlja_id, $naziv, $dan, $mjesec) = $row;
-                        echo "
-                        <tr>
-                            <td>$naziv</td>
-                            <td>$dan</td>
-                            <td>$mjesec</td>
-                            <td><a class='btn btn-primary' href='update_insert_holidays.php?id=$praznik_id&country_id=$country_id'>Ažuriraj</a></td>
-                            <td><a class='btn btn-danger' href='country_holiday.php?delete_id=$praznik_id&country_id=$zemlja_id'>Obriši</a></td>
-                        </tr>";
-                    }
-                ?>
+                    <?php
+                    if (!empty($query_r)) {
+                        foreach ($query_r as $row) {
+                            list($praznik_id, $zemlja_id, $naziv, $dan, $mjesec) = $row;
+                            echo "
+                            <tr>
+                                <td>$naziv</td>
+                                <td>$dan</td>
+                                <td>$mjesec</td>
+                                <td><a class='btn btn-primary' href='update_insert_holidays.php?id=$praznik_id&country_id=$country_id'>Ažuriraj</a></td>
+                                <td><a class='btn btn-danger' href='country_holiday.php?delete_id=$praznik_id&country_id=$zemlja_id'>Obriši</a></td>
+                            </tr>";
+                        }
+                    } else echo "<tr><td colspan='3' class='text-center'><strong><h3>Nema unesenih praznika</h3></strong></td></tr>";
+                    ?>
                 </tbody>
         </table>
         <hr style=" display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 0;">

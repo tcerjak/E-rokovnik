@@ -75,8 +75,8 @@
                     <button class='btn btn-default dropdown-toggle' type='button' data-toggle='dropdown'>Rokovnik
                       <span class='caret'></span></button>
                       <ul class='dropdown-menu'>
-                        <li><a href='#''>Pregled zapisa</a></li>
-                        <li><a href='#''>Dodaj zapis</a></li>
+                        <li><a href='records.php'>Pregled zapisa</a></li>
+                        <li><a href='update_insert_records.php'>Dodaj zapis</a></li>
                       </ul>
                     </div>
                   </li>
