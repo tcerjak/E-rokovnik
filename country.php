@@ -1,6 +1,8 @@
 <?php
 require 'core.php';
-$query_country = query_r("SELECT zemlja.zemlja_id, zemlja.naziv, zemlja.korisnik_id, korisnik.ime, korisnik.prezime FROM zemlja, korisnik WHERE zemlja.korisnik_id = korisnik.korisnik_id ");
+if ($_SESSION['aktivni_korisnik_tip'] == 0) {
+    $query_country = query_r("SELECT zemlja.zemlja_id, zemlja.naziv, zemlja.korisnik_id, korisnik.ime, korisnik.prezime FROM zemlja, korisnik WHERE zemlja.korisnik_id = korisnik.korisnik_id ");
+}
 if(isset($_GET['delete_id'])){
     $country_id = $_GET['delete_id'];
     query("DELETE FROM zemlja WHERE zemlja_id='$country_id'");
@@ -34,6 +36,8 @@ if(isset($_GET['delete_id'])){
                 <img src="img/users-icon.png"  width="250" height="250"">
                 <hr>
                 <div class="table-responsive">
+                <!-- ADMINISTRATOR IZBORNIK -->
+                <?php if ($_SESSION['aktivni_korisnik_tip'] == 0): ?>
                   <table class="table">
                     <thead>
                       <tr>
@@ -59,6 +63,37 @@ if(isset($_GET['delete_id'])){
                 ?>
             </tbody>
         </table>
+        <?php endif ?>
+        <!-- MODERATOR IZBORNIK-->
+        <?php if ($_SESSION['aktivni_korisnik_tip'] == 1):
+            $korisnik_id = $_SESSION['aktivni_korisnik_id'];
+            $query_country = query_r("SELECT * FROM zemlja WHERE korisnik_id = $korisnik_id");
+        ?>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Naziv države</th>
+                <th>Voditelj države</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            foreach ($query_country as $result){
+                list($country_id, $name_country, $user_id) = $result;
+                echo
+                "<tr>
+                <td>$country_id</td>
+                <td>$name_country</td>
+                <td><a class='btn btn-primary' href='update_insert_countries.php?id=$country_id'>Ažuriraj</a></td>
+                <td><a class='btn btn-primary' href='country_holiday.php?id=$country_id'>Pregled praznika</a></td>
+                <td><a class='btn btn-danger' href='country.php?delete_id=$country_id'>Obriši</a></td>
+            </tr>";
+        }
+        ?>
+    </tbody>
+</table>
+<?php endif ?>
     </div>
 </div>
 </div>

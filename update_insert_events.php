@@ -1,5 +1,8 @@
 <?php
 require 'core.php';
+if ($_SESSION['aktivni_korisnik_tip'] == 1 || $_SESSION['aktivni_korisnik_tip'] ==2 ) {
+    header('Location:index.php');
+}
 if (isset($_GET['id'])) {
     $event_id = $_GET['id'];
     $query_r = query_r("SELECT * FROM vrsta_dogadaja WHERE vrsta_id = $event_id");

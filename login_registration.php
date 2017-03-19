@@ -1,6 +1,6 @@
 <?php
 require 'core.php';
-if (isset($_POST['username'])) {
+if (isset($_POST['username']) && !isset($_POST['registration'])) {
     if (!empty($_POST['username']) && !empty($_POST['password'])) {
         $username = safe_insert($_POST['username']);
         $password = safe_insert($_POST['password']);
@@ -19,6 +19,21 @@ if (isset($_POST['username'])) {
         }
     } else {
         $greska = "Molimo Vas ispunite navedena polja";
+    }
+}
+
+if (isset($_POST['registration'])) {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $repeat_password = $_POST['repeat_password'];
+    $first_name = $_POST['first_name'];
+    $last_name = $_POST['last_name'];
+    $email = $_POST['email'];
+    if ($password == $repeat_password) {
+        query("INSERT INTO korisnik (tip_id, korisnicko_ime, lozinka, ime, prezime, email) VALUES (2, '$username', '$password', '$first_name', '$last_name', '$email')");
+        $obavijest = "Uspješno ste registrirani";
+    } else {
+        $obavijest = "Vaše lozinke se ne podudaraju";
     }
 }
 ?>
@@ -74,26 +89,34 @@ if (isset($_POST['username'])) {
                 <img src="img/registration.png" width="250" height="250">
                 <hr>
                 <p>Ukoliko niste prijavljeni na sustav registracija je potrebna</p>
-                <form style="padding-bottom: 50px; text-align: left;">
+                <form method="POST" action="login_registration.php" style="padding-bottom: 50px; text-align: left;">
                     <div class="form-group">
-                        <input type="text" class="form-control input-lg" id="username" placeholder="Korisničko ime">
+                        <input type="text" name="username" class="form-control input-lg" id="username" placeholder="Korisničko ime" required>
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control input-lg" id="pwd" placeholder="Lozinka">
+                        <input type="password" name="password" class="form-control input-lg" id="pwd" placeholder="Lozinka" required>
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control input-lg" id="pwd-repeat" placeholder="Potvrda lozinke">
+                        <input type="password" name="repeat_password" class="form-control input-lg" id="pwd-repeat" placeholder="Potvrda lozinke" required>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control input-lg" id="first-name" placeholder="Ime">
+                        <input type="text" name="first_name" class="form-control input-lg" id="first-name" placeholder="Ime">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control input-lg" id="last-name" placeholder="Prezime">
+                        <input type="text" name="last_name" class="form-control input-lg" id="last-name" placeholder="Prezime">
                     </div>
                     <div class="form-group">
-                        <input type="email" class="form-control input-lg" id="email" placeholder="Email">
+                        <input type="email" name="email" class="form-control input-lg" id="email" placeholder="Email">
                     </div>
+                    <input type="hidden" name="registration">
                     <button type="submit" class="btn btn-lg btn-primary btn-block">Potvrdi</button>
+                    <br>
+                    <?php if (isset($obavijest)): ?>
+                        <div class="alert alert-info">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <strong><?php echo $obavijest; ?></strong>
+                        </div>
+                    <?php endif ?>
                 </form>
             </div>
         </div>

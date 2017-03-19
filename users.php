@@ -1,5 +1,8 @@
 <?php
 require 'core.php';
+if ($_SESSION['aktivni_korisnik_tip'] == 1 || $_SESSION['aktivni_korisnik_tip'] ==2 ) {
+    header('Location:index.php');
+}
 $query_r = query_r("SELECT korisnik_id, tip_id, korisnicko_ime, lozinka, ime, prezime, email FROM korisnik");
 if(isset($_GET['delete_id'])){
     $user_id = $_GET['delete_id'];
