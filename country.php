@@ -87,7 +87,6 @@ if(isset($_GET['delete_id'])){
                 <td>$name_country</td>
                 <td><a class='btn btn-primary' href='update_insert_countries.php?id=$country_id'>Ažuriraj</a></td>
                 <td><a class='btn btn-primary' href='country_holiday.php?id=$country_id'>Pregled praznika</a></td>
-                <td><a class='btn btn-danger' href='country.php?delete_id=$country_id'>Obriši</a></td>
             </tr>";
         }
         ?>

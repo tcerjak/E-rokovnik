@@ -43,7 +43,7 @@ if (!isset($_GET['id']) && isset($_POST['update_record']) && empty($_POST['updat
         query("INSERT INTO rokovnik (korisnik_id, zemlja_id, vrsta_id, datum, vrijeme, opis) VALUES ('$korisnik_id', '$location', '$event', '$date', '$time', '$description')");
         header('Location:records.php');
     } else {
-        query("INSERT INTO rokovnik (korisnik_id, zemlja_id, vrsta_id, datum, vrijeme, opis, praznik_id) VALUES ('$korisnik_id', '$location', '$event', '$date', '$time', '$description', $praznik_id)");
+        query("INSERT INTO rokovnik (korisnik_id, zemlja_id, vrsta_id, datum, vrijeme, opis, praznik_id) VALUES ('$korisnik_id', '$location', '$event', '$date', '$time', '$description', '$holiday_id')");
         header('Location:records.php');
     }
 }

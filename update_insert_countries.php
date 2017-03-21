@@ -65,22 +65,25 @@ if(!isset($_GET['id']) && empty($_POST['country_id'])){
                         <label for="country_name" class="col-2 col-form-label">Naziv države</label>
                         <input type="text" class="form-control input-lg" id="country_name" name="country_name" placeholder="Naziv države" required='required' value="<?php if(isset($_GET['id'])){echo $country_name;}?>">
                     </div>
-                    <div class="form-group">
-                       <label for="moderator">Voditelj</label>
-                       <select name="moderator" id="input" class="form-control input-lg">
-                        <?php
-                        $query_r = query_r("SELECT ime, prezime, korisnik_id FROM korisnik WHERE tip_id = 1");
-                        foreach ($query_r as $row) {
-                            list($ime, $prezime, $korisnik_id) = $row;
-                            if($korisnik_id == $user_id){
-                                echo "<option value='$korisnik_id' selected>$ime $prezime</option>";
-                            } else {
-                                echo "<option value='$korisnik_id'>$ime $prezime</option>";
+                    <?php if ($_SESSION['aktivni_korisnik_tip']==0): ?>
+                        <div class="form-group">
+                         <label for="moderator">Voditelj</label>
+                         <select name="moderator" id="input" class="form-control input-lg">
+                            <?php
+                            $query_r = query_r("SELECT ime, prezime, korisnik_id FROM korisnik WHERE tip_id = 1");
+                            foreach ($query_r as $row) {
+                                list($ime, $prezime, $korisnik_id) = $row;
+                                if($korisnik_id == $user_id){
+                                    echo "<option value='$korisnik_id' selected>$ime $prezime</option>";
+                                } else {
+                                    echo "<option value='$korisnik_id'>$ime $prezime</option>";
+                                }
                             }
-                        }
-                        ?>
+
+                            ?>
                         </select>
                     </div>
+                <?php endif ?>
                       <input type="hidden" name="country_id" id="country_id" class="form-control" value="<?php if(isset($_GET['id'])){echo $_GET['id'];}?>">
                     <button type="submit" class="btn btn-lg btn-primary btn-block">Potvrdi</button>
                 </form>
