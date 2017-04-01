@@ -15,7 +15,8 @@
  <script type="text/javascript" src="assets/js/highlight.min.js"></script>
  <!-- Lokalizacija datuma-->
  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/i18n/jquery-ui-i18n.min.js"></script>
-
+<!-- Vrijeme -->
+<script src="https://s3-us-west-2.amazonaws.com/reallysimpleweather/reallysimpleweather-1.1.0.min.js"></script>
  <script>
     $("document").ready(function(){
                 var elements = document.getElementsByTagName("INPUT"); // namještavanje required polja
@@ -64,4 +65,19 @@
         align: 'left',
         donetext: 'Odaberi vrijeme'
     });
+    //------------------------TEMPERATURA----------------//
+    reallySimpleWeather.weather({
+    wunderkey: '', // leave blank for Yahoo
+    location: 'Zagreb, OR', //your location
+    woeid: '', // "Where on Earth ID"
+    unit: 'c', // 'c' also works
+    success: function(weather) {
+      html = weather.temp+'°'+weather.units.temp;
+      html += '&nbsp;'+weather.city+', '+weather.region;
+      document.getElementById('weather').innerHTML = html;
+  },
+  error: function(error) {
+      document.getElementById('weather').innerHTML = '<p>'+error+'</p>';
+  }
+});
 </script>

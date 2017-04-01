@@ -9,12 +9,12 @@
         if (!isset($_SESSION['aktivni_korisnik_id'])) {
             echo  "<a class='navbar-brand page-scroll' href='login_registration.php'>
             <i class='fa fa-thumbs-up'></i>
-            <span class='light'>Prijava</span>
+            <span class='light'>Prijava</span><div id='weather'></div>
         </a>";
     } else
     echo  "<a class='navbar-brand page-scroll' href='logaout.php'>
     <i class='fa fa-hand-spock-o'></i>
-    <span class='light'>Odjava " .$_SESSION['aktivni_korisnik_ime']."</span>
+    <span class='light'>Odjava " .$_SESSION['aktivni_korisnik_ime']."</span><div id='weather'></div>
 </a>";
 
 ?>
