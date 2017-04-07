@@ -28,7 +28,9 @@
       <a href="#page-top"></a>
   </li>
   <?php
-  if (!isset($_SESSION['aktivni_korisnik_id'])) {
+    $path = $_SERVER['PHP_SELF'];
+    $filename = basename($path, ".php");
+  if (!isset($_SESSION['aktivni_korisnik_id']) && $filename == "index") {
       echo "
       <li>
         <a class='page-scroll' href='#about'>O aplikaciji</a>
@@ -36,7 +38,16 @@
     <li>
         <a class='page-scroll' href='#contact'>Kontakt</a>
     </li>";
-} else
+} if (!isset($_SESSION['aktivni_korisnik_id']) && $filename == "login_registration") {
+         echo "
+      <li>
+        <a class='page-scroll' href='#about'>Registracija</a>
+    </li>
+      <li>
+        <a class='page-scroll' href='index.php'>Početna stranica</a>
+    </li>";
+}
+if (isset($_SESSION['aktivni_korisnik_id'])) {
 switch ( $_SESSION['aktivni_korisnik_tip']) {
   case 0:
   echo "
@@ -48,6 +59,11 @@ switch ( $_SESSION['aktivni_korisnik_tip']) {
           <li><a href='users.php''>Pregled korisnika</a></li>
           <li><a href='update_insert_user.php'>Dodaj korisnika</a></li>
       </ul>
+  </div>
+</li>
+<li>
+<div class='dropdown'>
+      <a href='users_activity.php' style='color:black;' class='btn btn-default'>Korisničke aktivnosti</a>
   </div>
 </li>
 <li>
@@ -120,7 +136,7 @@ echo "
 ";
 break;
 }
-
+}
 ?>
 </ul>
 </div>

@@ -12,6 +12,9 @@ if (isset($_POST['username']) && !isset($_POST['registration'])) {
                 $_SESSION['aktivni_korisnik_ime'] = $ime . " " . $prezime;
                 $_SESSION['aktivni_korisnik_id'] = $korisnik_id;
                 $_SESSION['aktivni_korisnik_tip'] = $tip_id;
+                $datum = date('Y-m-d');
+                $vrijeme = date('H:i:s');
+                query("INSERT INTO `korisnicke_aktivnosti` (`korisnik_id`, `datum`, `vrijeme`) VALUES ('$korisnik_id', '$datum', '$vrijeme')");
             }
             header('Location: index.php');
         } else {

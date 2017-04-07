@@ -1,7 +1,7 @@
 <?php
 require 'core.php';
-$korisnik_id = $_SESSION['aktivni_korisnik_id'];
-$query_r = query_r("SELECT * FROM rokovnik WHERE korisnik_id=$korisnik_id");
+$aktivni_korisnik_id = $_SESSION['aktivni_korisnik_id'];
+$query_r = query_r("SELECT * FROM rokovnik WHERE korisnik_id=$aktivni_korisnik_id");
 if(isset($_GET['delete_id'])){
     $record_id = $_GET['delete_id'];
     query("DELETE FROM rokovnik WHERE rokovnik_id='$record_id'");
@@ -42,39 +42,97 @@ if(isset($_GET['delete_id'])){
     <section id="about" class="container-fluid content-section text-center">
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
-                <img src="http://placehold.it/250x250"  width="250" height="250"">
-                <hr>
+                <img src="http://placehold.it/250x250"  width="250" height="250" style="padding-bottom: 20px;">
+                <!-- Forma za pronalazak po danu, mjesecu -->
                 <div class="table-responsive">
-                  <table class="table">
-                    <thead>
-                      <tr>
-                        <th>Datum unosa zapisa</th>
-                        <th>Vrijeme</th>
-                        <th>Tip događaja</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    if (!empty($query_r)) {
-                        foreach ($query_r as $row) {
-                            list($rokovnik_id, $korisnik_id, $zemlja_id, $vrsta_id, $datum, $vrijeme, $opis, $praznik_id) = $row;
-                            $tip_dogadaja_query = query("SELECT naziv FROM vrsta_dogadaja WHERE vrsta_id = $vrsta_id");
-                            $tip_dogadaja = mysqli_fetch_assoc($tip_dogadaja_query);
-                            echo "
+                    <form method="POST" action="">
+                        <table class="table table-hover table-bordered">
+                            <thead>
+                                <tr>
+                                    <th> Vidi zapise za:</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <input type="radio" name="pogled" value="danas"
+                                        checked <?php if (isset($_POST['pogled']) && $_POST['pogled'] == 'danas') {
+                                            echo ' checked="checked"';
+
+                                        } ?> onclick="this.form.submit();"> Danas
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                     <input type="radio" name="pogled"
+                                     value="mjesec" <?php if (isset($_POST['pogled']) && $_POST['pogled'] == 'mjesec') {
+                                        echo ' checked="checked"';
+                                    } ?> onclick="this.form.submit();"> Ovaj mjesec
+                                </td>
+                            </tr>
                             <tr>
-                             <td>$datum</td>
-                             <td>$vrijeme</td>
-                             <td>".$tip_dogadaja['naziv']."</td>
-                             <td><a class='btn btn-primary' href='update_insert_records.php?id=$rokovnik_id'>Pregled zapisa</a></td>
-                             <td><a class='btn btn-danger' href='records.php?delete_id=$rokovnik_id'>Obriši</a></td>
-                         </tr>";
-                     }
-                 } else echo "<tr><td colspan='3' class='text-center'><strong><h3>Nema unesenih zapisa</h3></strong></td></tr>";
-                 ?>
-             </tbody>
-         </table>
-     </div>
- </div>
+                                <td>
+                                   <input type="radio" name="pogled"
+                                   value="godina" <?php if (isset($_POST['pogled']) && $_POST['pogled'] == 'godina') {
+                                    echo ' checked="checked"';
+                                } ?> onclick="this.form.submit();"> Ovu godinu &nbsp;
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Datum unosa zapisa</th>
+                <th>Vrijeme</th>
+                <th>Tip događaja</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            if (isset($_POST['pogled'])) {
+                $pogled = $_POST['pogled'];
+                switch ($pogled) {
+                    case  $pogled == 'danas':
+                    $datum = date('Y-m-d');
+                    $upit_izvuci_zapise = "SELECT rokovnik_id, datum, vrijeme, vrsta_dogadaja.naziv as vrsta_dogadaja FROM rokovnik, vrsta_dogadaja WHERE korisnik_id ='4' AND rokovnik.vrsta_id = vrsta_dogadaja.vrsta_id AND datum = '$datum' order by vrijeme desc";
+                    break;
+                    case $pogled == 'mjesec':
+                    $datum = date('m');
+                    $upit_izvuci_zapise = "SELECT rokovnik_id, datum, vrijeme, vrsta_dogadaja.naziv as vrsta_dogadaja FROM rokovnik, vrsta_dogadaja WHERE korisnik_id ='$aktivni_korisnik_id' AND rokovnik.vrsta_id = vrsta_dogadaja.vrsta_id  AND month(datum) = '$datum' order by vrijeme desc";
+                    $rezultat_upita = query_r($upit_izvuci_zapise);
+                    break;
+                    case $pogled == 'godina':
+                    $datum = date('Y');
+                    $upit_izvuci_zapise = "SELECT rokovnik_id, datum, vrijeme, vrsta_dogadaja.naziv as vrsta_dogadaja FROM rokovnik, vrsta_dogadaja WHERE korisnik_id ='$aktivni_korisnik_id' AND rokovnik.vrsta_id = vrsta_dogadaja.vrsta_id AND year(datum) = '$datum' order by vrijeme desc";
+                    $rezultat_upita = query_r($upit_izvuci_zapise);
+                    break;
+                }
+            } else {
+                $datum = date('Y-m-d');
+                $upit_izvuci_zapise = "SELECT rokovnik_id, datum, vrijeme, vrsta_dogadaja.naziv as vrsta_dogadaja FROM rokovnik, vrsta_dogadaja WHERE korisnik_id ='$aktivni_korisnik_id' AND rokovnik.vrsta_id = vrsta_dogadaja.vrsta_id AND datum = '$datum' order by vrijeme desc";
+            }
+            $rezultat_upita = query_r($upit_izvuci_zapise);
+            foreach ($rezultat_upita as $red_BP) {
+                list($rokovnik_id, $datum, $vrijeme, $vrsta_dogadaja) = $red_BP;
+                echo "<tr class='border_bottom'>
+                <td>$datum</td>
+                <td>$vrijeme</td>
+                <td>$vrsta_dogadaja</td>
+                <td><a href='update_insert_records.php?id=$rokovnik_id' class='uredi_zapis'>Uredi</a></td>
+            </tr>";
+        }
+        if (empty($rezultat_upita)) {
+            echo "<tr><td colspan='6' align='center'><b><i>Nema unesenih zapisa za navedeni datum $datum</i></b></td></tr>";
+        }
+        ?>
+    </tbody>
+</table>
+</div>
+</div>
 </div>
 </section>
 <?php require 'js_script.php'; ?>

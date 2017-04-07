@@ -74,7 +74,7 @@ if(isset($_GET['delete_id'])){
               <tr>
                 <th>#</th>
                 <th>Naziv države</th>
-                <th>Voditelj države</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>

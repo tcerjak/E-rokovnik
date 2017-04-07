@@ -41,13 +41,10 @@ require 'core.php';
             <p>Feel free to email us to provide some feedback on our templates, give us suggestions for new templates and themes, or to just say hello!</p>
             <ul class="list-inline banner-social-buttons">
                 <li>
-                    <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
+                    <a href="https://moj.tvz.hr/" class="btn btn-default btn-lg"><img src="img/TVZ.png" height="90px" width="90px"></a>
                 </li>
                 <li>
-                    <a href="https://github.com/IronSummitMedia/startbootstrap" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
-                </li>
-                <li>
-                    <a href="https://plus.google.com/+Startbootstrap/posts" class="btn btn-default btn-lg"><i class="fa fa-google-plus fa-fw"></i> <span class="network-name">Google+</span></a>
+                    <a href="https://github.com/tcerjak/E-rokovnik" target="__blank" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw fa-4x"></i></a>
                 </li>
             </ul>
         </div>
