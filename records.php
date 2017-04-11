@@ -42,9 +42,9 @@ if(isset($_GET['delete_id'])){
     <section id="about" class="container-fluid content-section text-center">
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
-                <img src="http://placehold.it/250x250"  width="250" height="250" style="padding-bottom: 20px;">
+                <img src="img/rokovnik.png"  width="250" height="250" style="padding-bottom: 20px;">
                 <!-- Forma za pronalazak po danu, mjesecu -->
-                <div class="table-responsive">
+               <div class="well well-sm">
                     <form method="POST" action="">
                         <table class="table table-hover table-bordered">
                             <thead>
@@ -82,8 +82,8 @@ if(isset($_GET['delete_id'])){
                 </table>
             </form>
         </div>
-        <div class="table-responsive">
-          <table class="table">
+        <div class="well well-sm">
+          <table class="table table-hover table-bordered">
             <thead>
               <tr>
                 <th>Datum unosa zapisa</th>

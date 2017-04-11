@@ -36,7 +36,7 @@ if(isset($_GET['delete_id'])){
     <section id="about" class="container-fluid content-section text-center">
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
-                <img src="img/users-icon.png"  width="250" height="250"">
+                <img src="img/holiday-icon.png"  width="250" height="250"">
                 <hr>
                 <div class="table-responsive">
                   <table class="table">

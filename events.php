@@ -34,10 +34,10 @@ if(isset($_GET['delete_id'])){
     <section id="about" class="container-fluid content-section text-center">
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
-                <img src="img/users-icon.png"  width="250" height="250"">
+                <img src="img/event.png"  width="250" height="250"">
                 <hr>
-                <div class="table-responsive">
-                  <table class="table">
+                 <div class="well well-sm">
+                    <table class="table table-hover table-bordered">
                     <thead>
                       <tr>
                         <th>#</th>

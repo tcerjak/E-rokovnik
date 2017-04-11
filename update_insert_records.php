@@ -66,8 +66,10 @@ if (!isset($_GET['id']) && isset($_POST['update_record']) && empty($_POST['updat
                     <div class="col-md-8 col-md-offset-2">
                         <h1 class="brand-heading">
                             <?php
-                            echo "Zapisi";
-                            ?>
+                            if (isset($_GET['id'])) {
+                                echo "Ažuriranje zapisa";
+                            } else echo "Dodavanje zapisa";
+                             ?>
                         </h1>
                         <a href="#about" class="btn btn-circle page-scroll">
                             <i class="fa fa-angle-double-down animated"></i>
@@ -82,7 +84,7 @@ if (!isset($_GET['id']) && isset($_POST['update_record']) && empty($_POST['updat
     <section id="about" class="container-fluid content-section text-center">
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
-                <img src="http://placehold.it/250x250"  width="250" height="250"">
+                <img src="img/rokovnik.png"  width="250" height="250"">
                 <hr>
                 <form method="POST" action="update_insert_records.php" style="padding-bottom: 50px; text-align: left;">
                     <div class="form-group input-group clockpicker">

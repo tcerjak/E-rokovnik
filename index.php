@@ -27,7 +27,7 @@ require 'core.php';
                 <h2>O aplikaciji</h2>
                 <img src="img/pencil-icon.png"  width="250" height="250">
                 <hr>
-                <p>Grayscale is a free Bootstrap 3 theme created by Start Bootstrap. It can be yours right now, simply download the template on <a href="http://startbootstrap.com/template-overviews/grayscale/">the preview page</a>. The theme is open source, and you can use it for any purpose, personal or commercial.</p>
+                <p>Aplikacija zabilježite trenutak je jednostavna aplikacija koja omogućuje korisnicima bilježenje značajnih datuma koji su bitni u njihovim životima i potrebno ih je obilježiti. Smatramo da je u današnje vrijeme vremensko upravljanje odnosno „time management“ izuzetno bitna stavka i ovom aplikacijom želimo omogućiti bolje upravljanje vremenom.</p>
             </div>
         </div>
     </section>
@@ -38,10 +38,10 @@ require 'core.php';
             <h2>Kontaktirajte nas</h2>
             <img src="img/paper-plane.png"  width="250" height="250">
             <hr>
-            <p>Feel free to email us to provide some feedback on our templates, give us suggestions for new templates and themes, or to just say hello!</p>
+            <p>Slobodno nas kontaktirajte preko GitHub-a ili preko web aplikacije moj tvz.</p>
             <ul class="list-inline banner-social-buttons">
                 <li>
-                    <a href="https://moj.tvz.hr/" class="btn btn-default btn-lg"><img src="img/TVZ.png" height="90px" width="90px"></a>
+                    <a href="https://moj.tvz.hr/" target="__blank" class="btn btn-default btn-lg"><img src="img/TVZ.png" height="90px" width="90px"></a>
                 </li>
                 <li>
                     <a href="https://github.com/tcerjak/E-rokovnik" target="__blank" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw fa-4x"></i></a>

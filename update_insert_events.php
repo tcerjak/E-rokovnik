@@ -64,7 +64,7 @@ if(!isset($_GET['id']) && empty($_POST['event_id'])){
     <section id="about" class="container-fluid content-section text-center">
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
-                <img src="http://placehold.it/250x250"  width="250" height="250"">
+                <img src="img/event.png"  width="250" height="250"">
                 <hr>
                 <form method="POST" action="update_insert_events.php" style="padding-bottom: 50px; text-align: left;">
                     <div class="form-group">

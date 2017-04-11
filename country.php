@@ -33,12 +33,12 @@ if(isset($_GET['delete_id'])){
     <section id="about" class="container-fluid content-section text-center">
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
-                <img src="img/users-icon.png"  width="250" height="250"">
+                <img src="img/globe-flat.png"  width="250" height="250"">
                 <hr>
-                <div class="table-responsive">
+                <div class="well well-sm">
                 <!-- ADMINISTRATOR IZBORNIK -->
                 <?php if ($_SESSION['aktivni_korisnik_tip'] == 0): ?>
-                  <table class="table">
+                   <table class="table table-hover table-bordered">
                     <thead>
                       <tr>
                         <th>#</th>
@@ -69,7 +69,7 @@ if(isset($_GET['delete_id'])){
             $korisnik_id = $_SESSION['aktivni_korisnik_id'];
             $query_country = query_r("SELECT * FROM zemlja WHERE korisnik_id = $korisnik_id");
         ?>
-          <table class="table">
+           <table class="table table-hover table-bordered">
             <thead>
               <tr>
                 <th>#</th>

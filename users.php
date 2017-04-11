@@ -36,8 +36,8 @@ if(isset($_GET['delete_id'])){
             <div class="col-md-6 col-md-offset-3">
                 <img src="img/users-icon.png"  width="250" height="250"">
                 <hr>
-                <div class="table-responsive">
-                  <table class="table">
+                <div class="well well-sm">
+                  <table class="table table-hover table-bordered">
                     <thead>
                       <tr>
                         <th>#</th>

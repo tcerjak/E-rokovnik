@@ -8,12 +8,21 @@ if (isset($_GET['id'])) {
     }
 }
 //---------------------------------------------//
-if(isset($_POST['country_id']) && !empty($_POST['country_id'])){
-    $country_id = $_POST['country_id'];
-    $country_name = $_POST['country_name'];
-    $user_id = $_POST['moderator'];
-    query("UPDATE zemlja SET korisnik_id=$user_id, naziv='$country_name' WHERE zemlja_id=$country_id");
-    header('Location: country.php');
+if ($_SESSION['aktivni_korisnik_tip']==0) {
+    if(isset($_POST['country_id']) && !empty($_POST['country_id'])){
+        $country_id = $_POST['country_id'];
+        $country_name = $_POST['country_name'];
+        $user_id = $_POST['moderator'];
+        query("UPDATE zemlja SET korisnik_id=$user_id, naziv='$country_name' WHERE zemlja_id=$country_id");
+        header('Location: country.php');
+    }
+} elseif ($_SESSION['aktivni_korisnik_tip']==1) {
+    if(isset($_POST['country_id']) && !empty($_POST['country_id'])){
+        $country_id = $_POST['country_id'];
+        $country_name = $_POST['country_name'];
+        query("UPDATE zemlja SET naziv='$country_name' WHERE zemlja_id=$country_id");
+        header('Location: country.php');
+    }
 }
 //--------------------------------------------//
 if(!isset($_GET['id']) && empty($_POST['country_id'])){
@@ -58,7 +67,7 @@ if(!isset($_GET['id']) && empty($_POST['country_id'])){
     <section id="about" class="container-fluid content-section text-center">
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
-                <img src="http://placehold.it/250x250"  width="250" height="250"">
+                <img src="img/globe-flat.png"  width="250" height="250"">
                 <hr>
                 <form method="POST" action="update_insert_countries.php" style="padding-bottom: 50px; text-align: left;">
                     <div class="form-group">

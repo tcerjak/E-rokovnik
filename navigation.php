@@ -33,18 +33,18 @@
   if (!isset($_SESSION['aktivni_korisnik_id']) && $filename == "index") {
       echo "
       <li>
-        <a class='page-scroll' href='#about'>O aplikaciji</a>
+        <a class='page-scroll' href='#about'><strong>O aplikaciji</strong></a>
     </li>
     <li>
-        <a class='page-scroll' href='#contact'>Kontakt</a>
+        <a class='page-scroll' href='#contact'><strong>Kontakt</strong></a>
     </li>";
 } if (!isset($_SESSION['aktivni_korisnik_id']) && $filename == "login_registration") {
          echo "
       <li>
-        <a class='page-scroll' href='#about'>Registracija</a>
+        <a class='page-scroll' href='#about'><strong>Registracija</strong></a>
     </li>
       <li>
-        <a class='page-scroll' href='index.php'>Početna stranica</a>
+        <a class='page-scroll' href='index.php'><strong>Početna stranica</strong></a>
     </li>";
 }
 if (isset($_SESSION['aktivni_korisnik_id'])) {
